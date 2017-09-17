@@ -1,5 +1,10 @@
+<<<<<<< HEAD
+// flow-typed signature: 7f1a115f75043c44385071ea3f33c586
+// flow-typed version: 358375125e/redux_v3.x.x/flow_>=v0.33.x
+=======
 // flow-typed signature: 86993bd000012d3e1ef10d757d16952d
 // flow-typed version: a165222d28/redux_v3.x.x/flow_>=v0.33.x
+>>>>>>> master
 
 declare module 'redux' {
 
@@ -7,6 +12,21 @@ declare module 'redux' {
 
     S = State
     A = Action
+<<<<<<< HEAD
+
+  */
+
+  declare type Dispatch<A: { type: $Subtype<string> }> = (action: A) => A;
+
+  declare type MiddlewareAPI<S, A> = {
+    dispatch: Dispatch<A>;
+    getState(): S;
+  };
+
+  declare type Store<S, A> = {
+    // rewrite MiddlewareAPI members in order to get nicer error messages (intersections produce long messages)
+    dispatch: Dispatch<A>;
+=======
     D = Dispatch
 
   */
@@ -22,6 +42,7 @@ declare module 'redux' {
   declare type Store<S, A, D = Dispatch<A>> = {
     // rewrite MiddlewareAPI members in order to get nicer error messages (intersections produce long messages)
     dispatch: D;
+>>>>>>> master
     getState(): S;
     subscribe(listener: () => void): () => void;
     replaceReducer(nextReducer: Reducer<S, A>): void
@@ -31,6 +52,23 @@ declare module 'redux' {
 
   declare type CombinedReducer<S, A> = (state: $Shape<S> & {} | void, action: A) => S;
 
+<<<<<<< HEAD
+  declare type Middleware<S, A> =
+    (api: MiddlewareAPI<S, A>) =>
+      (next: Dispatch<A>) => Dispatch<A>;
+
+  declare type StoreCreator<S, A> = {
+    (reducer: Reducer<S, A>, enhancer?: StoreEnhancer<S, A>): Store<S, A>;
+    (reducer: Reducer<S, A>, preloadedState: S, enhancer?: StoreEnhancer<S, A>): Store<S, A>;
+  };
+
+  declare type StoreEnhancer<S, A> = (next: StoreCreator<S, A>) => StoreCreator<S, A>;
+
+  declare function createStore<S, A>(reducer: Reducer<S, A>, enhancer?: StoreEnhancer<S, A>): Store<S, A>;
+  declare function createStore<S, A>(reducer: Reducer<S, A>, preloadedState: S, enhancer?: StoreEnhancer<S, A>): Store<S, A>;
+
+  declare function applyMiddleware<S, A>(...middlewares: Array<Middleware<S, A>>): StoreEnhancer<S, A>;
+=======
   declare type Middleware<S, A, D = Dispatch<A>> =
     (api: MiddlewareAPI<S, A, D>) =>
       (next: D) => D;
@@ -46,10 +84,19 @@ declare module 'redux' {
   declare function createStore<S, A, D>(reducer: Reducer<S, A>, preloadedState: S, enhancer?: StoreEnhancer<S, A, D>): Store<S, A, D>;
 
   declare function applyMiddleware<S, A, D>(...middlewares: Array<Middleware<S, A, D>>): StoreEnhancer<S, A, D>;
+>>>>>>> master
 
   declare type ActionCreator<A, B> = (...args: Array<B>) => A;
   declare type ActionCreators<K, A> = { [key: K]: ActionCreator<A, any> };
 
+<<<<<<< HEAD
+  declare function bindActionCreators<A, C: ActionCreator<A, any>>(actionCreator: C, dispatch: Dispatch<A>): C;
+  declare function bindActionCreators<A, K, C: ActionCreators<K, A>>(actionCreators: C, dispatch: Dispatch<A>): C;
+
+  declare function combineReducers<O: Object, A>(reducers: O): CombinedReducer<$ObjMap<O, <S>(r: Reducer<S, any>) => S>, A>;
+
+  declare function compose<S, A>(...fns: Array<StoreEnhancer<S, A>>): Function;
+=======
   declare function bindActionCreators<A, C: ActionCreator<A, any>, D: DispatchAPI<A>>(actionCreator: C, dispatch: D): C;
   declare function bindActionCreators<A, K, C: ActionCreators<K, A>, D: DispatchAPI<A>>(actionCreators: C, dispatch: D): C;
 
@@ -105,5 +152,6 @@ declare module 'redux' {
     bc: (b: B) => C,
     ab: (a: A) => B
   ): (a: A) => I
+>>>>>>> master
 
 }
