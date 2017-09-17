@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 public/bundle.js
 node_modules/
 .eslintcache
@@ -12,3 +13,8 @@ _site/
 .sass-cache/
 *.iml
 .idea/
+=======
+.DS_Store
+*.DS_Store
+node_modules/
+>>>>>>> master
