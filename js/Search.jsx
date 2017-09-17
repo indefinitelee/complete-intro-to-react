@@ -3,6 +3,7 @@
 import React, { Component } from 'react';
 import ShowCard from './ShowCard';
 import Header from './Header';
+import Show from '../flow-typed/types';
 
 class Search extends Component {
   state = {

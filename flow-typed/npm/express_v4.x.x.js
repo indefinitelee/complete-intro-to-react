@@ -1,7 +1,15 @@
+<<<<<<< HEAD
 // flow-typed signature: 0a6a6906c197a7b95b251a16f7064bee
 // flow-typed version: f471f20d31/express_v4.x.x/flow_>=v0.32.x
 
 import type { Server } from 'http';
+=======
+// flow-typed signature: 1e4577f4ead8bf5f0adbdaa1a243c60a
+// flow-typed version: ef2fdb0770/express_v4.x.x/flow_>=v0.32.x
+
+import type { Server } from 'http';
+import type { Socket } from 'net';
+>>>>>>> master
 
 declare type express$RouterOptions = {
   caseSensitive?: boolean,
@@ -14,17 +22,32 @@ declare class express$RequestResponseBase {
   get(field: string): string | void;
 }
 
+<<<<<<< HEAD
+=======
+declare type express$RequestParams = {
+  [param: string]: string
+}
+
+>>>>>>> master
 declare class express$Request extends http$IncomingMessage mixins express$RequestResponseBase {
   baseUrl: string;
   body: any;
   cookies: {[cookie: string]: string};
+<<<<<<< HEAD
+=======
+  connection: Socket;
+>>>>>>> master
   fresh: boolean;
   hostname: string;
   ip: string;
   ips: Array<string>;
   method: string;
   originalUrl: string;
+<<<<<<< HEAD
   params: {[param: string]: string};
+=======
+  params: express$RequestParams;
+>>>>>>> master
   path: string;
   protocol: 'https' | 'http';
   query: {[name: string]: string};
@@ -35,6 +58,10 @@ declare class express$Request extends http$IncomingMessage mixins express$Reques
   subdomains: Array<string>;
   xhr: boolean;
   accepts(types: string): string | false;
+<<<<<<< HEAD
+=======
+  accepts(types: Array<string>): string | false;
+>>>>>>> master
   acceptsCharsets(...charsets: Array<string>): string | false;
   acceptsEncodings(...encoding: Array<string>): string | false;
   acceptsLanguages(...lang: Array<string>): string | false;
@@ -90,6 +117,10 @@ declare class express$Response extends http$ServerResponse mixins express$Reques
   status(statusCode: number): this;
   type(type: string): this;
   vary(field: string): this;
+<<<<<<< HEAD
+=======
+  req: express$Request;
+>>>>>>> master
 }
 
 declare type express$NextFunction = (err?: ?Error | 'route') => mixed;
@@ -136,7 +167,11 @@ declare class express$Route {
 declare class express$Router extends express$Route {
   constructor(options?: express$RouterOptions): void;
   route(path: string): express$Route;
+<<<<<<< HEAD
   static (): express$Router;
+=======
+  static (options?: express$RouterOptions): express$Router;
+>>>>>>> master
   use(middleware: express$Middleware): this;
   use(...middleware: Array<express$Middleware>): this;
   use(path: string|RegExp|string[], ...middleware: Array<express$Middleware>): this;
@@ -158,7 +193,11 @@ declare class express$Application extends express$Router mixins events$EventEmit
   listen(handle: Object, callback?: (err?: ?Error) => mixed): Server;
   disable(name: string): void;
   disabled(name: string): boolean;
+<<<<<<< HEAD
   enable(name: string): void;
+=======
+  enable(name: string): express$Application;
+>>>>>>> master
   enabled(name: string): boolean;
   engine(name: string, callback: Function): void;
   /**
@@ -171,6 +210,7 @@ declare class express$Application extends express$Router mixins events$EventEmit
 }
 
 declare module 'express' {
+<<<<<<< HEAD
   declare function serveStatic(root: string, options?: Object): express$Middleware;
 
   declare type RouterOptions = express$RouterOptions;
@@ -184,6 +224,20 @@ declare module 'express' {
   declare module.exports: {
     (): express$Application, // If you try to call like a function, it will use this signature
     static: serveStatic, // `static` property on the function
+=======
+  declare export type RouterOptions = express$RouterOptions;
+  declare export type CookieOptions = express$CookieOptions;
+  declare export type Middleware = express$Middleware;
+  declare export type NextFunction = express$NextFunction;
+  declare export type RequestParams = express$RequestParams;
+  declare export type $Response = express$Response;
+  declare export type $Request = express$Request;
+  declare export type $Application = express$Application;
+
+  declare module.exports: {
+    (): express$Application, // If you try to call like a function, it will use this signature
+    static: (root: string, options?: Object) => express$Middleware, // `static` property on the function
+>>>>>>> master
     Router: typeof express$Router, // `Router` property on the function
   };
 }

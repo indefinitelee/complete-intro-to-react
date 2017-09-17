@@ -8,6 +8,7 @@ const Details = (props: { show: Show }) => {
   return (
     <div className="details">
       <Header />
+
       <section>
         <h1>{title}</h1>
         <h2>({year})</h2>
