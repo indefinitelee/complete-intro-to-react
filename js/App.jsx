@@ -17,7 +17,7 @@ const App = () => (
         <Route
           path="/details/:id"
           component={props => {
-            const selectedShow = preload.shows.find(show => props.match.params.id === show.imdbID);
+            const selectedShow = preload.shows.find(show => props.Match.params.id === show.imdbID);
             return <Details show={selectedShow} />;
           }}
         />
@@ -28,7 +28,7 @@ const App = () => (
 );
 
 App.propTypes = {
-  match: Match
+  Match: Match
 };
 
 export default App;
