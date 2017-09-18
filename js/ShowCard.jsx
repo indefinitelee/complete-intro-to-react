@@ -21,7 +21,9 @@ const Image = styled.img`
   margin-right: 10px;
 `;
 
+/* eslint-disable */
 class ShowCard extends Component {
+  /* eslint-enable */
   shouldComponentUpdate() {
     return false;
   }

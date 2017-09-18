@@ -19,7 +19,7 @@ class Landing extends Component {
   render() {
     return (
       <div className="landing">
-        <h1>Videos!</h1>
+        <h1>svideo</h1>
         <form onSubmit={this.goToSearch}>
           <input
             onChange={this.props.handleSearchTermChange}
@@ -40,4 +40,5 @@ const mapDispatchToProps = (dispatch: Function) => ({
     dispatch(setSearchTerm(event.target.value));
   }
 });
+
 export default connect(mapStateToProps, mapDispatchToProps)(Landing);
